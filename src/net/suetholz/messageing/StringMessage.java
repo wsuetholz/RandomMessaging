@@ -13,10 +13,22 @@ import net.suetholz.messageing.api.MessageType;
  * @author wsuetholz
  */
 public class StringMessage implements MessageType {
+    private static final String MESSAGE_IS_NULL = "Message parameter invalid!";
     private String message;
     
     public StringMessage(String message) {
-	
+	setMessage(message);
+    }
+
+    public String getMessage() {
+	return message;
+    }
+
+    public void setMessage(String message) {
+	if (message == null) {
+	    throw new IllegalArgumentException(MESSAGE_IS_NULL);
+	}
+	this.message = message;
     }
 
     @Override
