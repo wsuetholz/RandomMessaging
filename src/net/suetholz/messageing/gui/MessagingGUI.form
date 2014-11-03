@@ -155,6 +155,9 @@
           </Border>
         </Property>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="selectMessagePanel1 = new net.suetholz.messageing.gui.SelectMessagePanel(messageProducer);&#xa;"/>
+      </AuxValues>
     </Component>
   </SubComponents>
 </Form>

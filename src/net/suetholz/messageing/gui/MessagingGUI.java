@@ -61,7 +61,8 @@ public class MessagingGUI extends javax.swing.JFrame {
         ;
         pnlStringMessage = pnlStringMessage = new net.suetholz.messageing.gui.StringMessagePanel(initialListeners);
         ;
-        selectMessagePanel1 = new net.suetholz.messageing.gui.SelectMessagePanel();
+        selectMessagePanel1 = selectMessagePanel1 = new net.suetholz.messageing.gui.SelectMessagePanel(messageProducer);
+        ;
         mnuBar = new javax.swing.JMenuBar();
         mnuFile = new javax.swing.JMenu();
         mnuEdit = new javax.swing.JMenu();

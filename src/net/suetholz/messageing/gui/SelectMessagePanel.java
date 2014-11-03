@@ -5,16 +5,29 @@
  */
 package net.suetholz.messageing.gui;
 
+import net.suetholz.messageing.api.MessageProducer;
+
 /**
  *
  * @author wsuetholz
  */
 public class SelectMessagePanel extends javax.swing.JPanel {
 
+    MessageProducer selectMessage;
+    
     /**
      * Creates new form SelectMessagePanel
      */
     public SelectMessagePanel() {
+	initComponents();
+    }
+    public SelectMessagePanel(MessageProducer selectMessage) {
+	if (selectMessage == null) {
+	    throw new IllegalArgumentException();
+	}
+	
+	this.selectMessage = selectMessage;
+	
 	initComponents();
     }
 
