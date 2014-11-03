@@ -7,6 +7,10 @@ package net.suetholz.messageing.gui;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JButton;
+import net.suetholz.messageing.api.MessageProducer;
+import net.suetholz.messageing.api.MessageStorageChangedListener;
+import net.suetholz.messageing.api.MessageType;
 
 /**
  *
@@ -14,9 +18,29 @@ import java.awt.event.ActionListener;
  */
 public class SelectMessageListener implements ActionListener {
 
+    MessageProducer selectMessage;
+
+    /**
+     * Creates new form SelectMessagePanel
+     */
+    public SelectMessageListener(MessageProducer selectMessage) {
+	if (selectMessage == null) {
+	    throw new IllegalArgumentException();
+	}
+
+	this.selectMessage = selectMessage;
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
-	throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+	if (e.getSource() instanceof JButton) {
+	    JButton button = (JButton) e.getSource();
+	    if (button.getParent() instanceof SelectMessagePanel) {
+		SelectMessagePanel panel = (SelectMessagePanel) button.getParent();
+		panel.setMessageText ( selectMessage.produceMessage().toString() );
+	    }
+	}
+
     }
-    
+
 }

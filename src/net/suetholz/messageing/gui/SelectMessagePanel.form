@@ -57,7 +57,7 @@
         <Property name="text" type="java.lang.String" value="Select Message"/>
       </Properties>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="btnSelectMessage.addActionListener(new SelectMessageListener());"/>
+        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="btnSelectMessage.addActionListener(new SelectMessageListener(selectMessage));"/>
       </AuxValues>
     </Component>
     <Container class="javax.swing.JScrollPane" name="pneSelectedMessage">

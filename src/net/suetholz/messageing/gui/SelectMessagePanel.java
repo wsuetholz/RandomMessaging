@@ -18,9 +18,6 @@ public class SelectMessagePanel extends javax.swing.JPanel {
     /**
      * Creates new form SelectMessagePanel
      */
-    public SelectMessagePanel() {
-	initComponents();
-    }
     public SelectMessagePanel(MessageProducer selectMessage) {
 	if (selectMessage == null) {
 	    throw new IllegalArgumentException();
@@ -31,6 +28,14 @@ public class SelectMessagePanel extends javax.swing.JPanel {
 	initComponents();
     }
 
+    public void setMessageText ( String txtString ) {
+	if (txtString == null) {
+	    throw new IllegalArgumentException();
+	}
+	
+	txtSelectedMessage.setText(txtString);
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -48,7 +53,7 @@ public class SelectMessagePanel extends javax.swing.JPanel {
         lblSelected.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblSelected.setText("Selected Message");
 
-        btnSelectMessage.addActionListener(new SelectMessageListener());
+        btnSelectMessage.addActionListener(new SelectMessageListener(selectMessage));
         btnSelectMessage.setText("Select Message");
 
         txtSelectedMessage.setColumns(20);
