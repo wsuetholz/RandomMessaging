@@ -3,19 +3,38 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package net.suetholz.messageing;
+package net.suetholz.messageing.gui;
+
+import java.util.List;
+import net.suetholz.messageing.StringMessage;
+import net.suetholz.messageing.api.MessageProducer;
+import net.suetholz.messageing.api.MessageStorageChangedListener;
+import net.suetholz.messageing.api.MessageType;
 
 /**
  *
  * @author wsuetholz
  */
-public class StringMessagePanel extends javax.swing.JPanel {
+public class StringMessagePanel extends javax.swing.JPanel implements MessageProducer {
+    private static final String LISTENER_NULL = "Initial Listeners is NULL!";
+
+    List<MessageStorageChangedListener> initialListeners;
 
     /**
      * Creates new form StringMessagePanel
      */
-    public StringMessagePanel() {
+    public StringMessagePanel(List<MessageStorageChangedListener> initialListeners) {
+	if (initialListeners == null) {
+	    throw new IllegalArgumentException(LISTENER_NULL);
+	}
+
+	this.initialListeners = initialListeners;
 	initComponents();
+    }
+
+    @Override
+    public MessageType produceMessage() {
+	return (new StringMessage (txtMessage.getText()));
     }
 
     /**
@@ -36,10 +55,10 @@ public class StringMessagePanel extends javax.swing.JPanel {
         lblMessage.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblMessage.setText("Message");
 
-        btnAddMessage.addActionListener(new AddMessageListener());
+        btnAddMessage.addActionListener(new AddMessageListener(initialListeners));
         btnAddMessage.setText("Add Message");
 
-        btnRemoveMessage.addActionListener(new RemoveMessageListener());
+        btnRemoveMessage.addActionListener(new RemoveMessageListener(initialListeners));
         btnRemoveMessage.setText("Remove Message");
 
         txtMessage.setColumns(20);

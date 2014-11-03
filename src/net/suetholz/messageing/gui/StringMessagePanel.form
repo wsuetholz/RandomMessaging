@@ -66,7 +66,7 @@
         <Property name="text" type="java.lang.String" value="Add Message"/>
       </Properties>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="btnAddMessage.addActionListener(new AddMessageListener());"/>
+        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="btnAddMessage.addActionListener(new AddMessageListener(initialListeners));"/>
       </AuxValues>
     </Component>
     <Component class="javax.swing.JButton" name="btnRemoveMessage">
@@ -74,7 +74,7 @@
         <Property name="text" type="java.lang.String" value="Remove Message"/>
       </Properties>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="btnRemoveMessage.addActionListener(new RemoveMessageListener());"/>
+        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="btnRemoveMessage.addActionListener(new RemoveMessageListener(initialListeners));"/>
       </AuxValues>
     </Component>
     <Container class="javax.swing.JScrollPane" name="pneMessage">

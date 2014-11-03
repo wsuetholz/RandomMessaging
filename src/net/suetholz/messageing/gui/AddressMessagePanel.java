@@ -3,19 +3,38 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package net.suetholz.messageing;
+package net.suetholz.messageing.gui;
+
+import java.util.List;
+import net.suetholz.messageing.AddressMessage;
+import net.suetholz.messageing.api.MessageStorageChangedListener;
+import net.suetholz.messageing.api.MessageProducer;
+import net.suetholz.messageing.api.MessageType;
 
 /**
  *
  * @author wsuetholz
  */
-public class AddressMessagePanel extends javax.swing.JPanel {
+public class AddressMessagePanel extends javax.swing.JPanel implements MessageProducer {
+    private static final String LISTENER_NULL = "Initial Listeners is NULL!";
+
+    List<MessageStorageChangedListener> initialListeners;
 
     /**
      * Creates new form AddressMessagePanel
      */
-    public AddressMessagePanel() {
+    public AddressMessagePanel(List<MessageStorageChangedListener> initialListeners) {
+	if (initialListeners == null) {
+	    throw new IllegalArgumentException(LISTENER_NULL);
+	}
+	this.initialListeners = initialListeners;
+	
 	initComponents();
+    }
+
+    @Override
+    public MessageType produceMessage() {
+	return (new AddressMessage (txtFirstName.getText(), txtLastName.getText(), txtAddress.getText(), txtCity.getText(), txtState.getText(), txtZip.getText()));
     }
 
     /**
@@ -36,11 +55,11 @@ public class AddressMessagePanel extends javax.swing.JPanel {
         lblCity = new javax.swing.JLabel();
         txtCity = new javax.swing.JTextField();
         lblState = new javax.swing.JLabel();
-        cmbState = new javax.swing.JComboBox();
         lblZip = new javax.swing.JLabel();
         txtZip = new javax.swing.JTextField();
         btnAddAddress = new javax.swing.JButton();
         btnRemoveAddress = new javax.swing.JButton();
+        txtState = new javax.swing.JTextField();
 
         lblFirstName.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblFirstName.setText("First Name");
@@ -66,18 +85,19 @@ public class AddressMessagePanel extends javax.swing.JPanel {
         lblState.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblState.setText("State");
 
-        cmbState.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         lblZip.setText("Zip");
 
         txtZip.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         txtZip.setText("                                   ");
 
-        btnAddAddress.addActionListener(new AddAddressListener());
+        btnAddAddress.addActionListener(new AddMessageListener(initialListeners));
         btnAddAddress.setText("Add Address Message");
 
-        btnRemoveAddress.addActionListener(new RemoveAddressListener());
+        btnRemoveAddress.addActionListener(new RemoveMessageListener(initialListeners));
         btnRemoveAddress.setText("Remove Address Message");
+
+        txtState.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        txtState.setText("                  ");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -103,8 +123,8 @@ public class AddressMessagePanel extends javax.swing.JPanel {
                             .addGroup(layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(lblState, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(cmbState, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtState, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(lblZip, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -142,9 +162,9 @@ public class AddressMessagePanel extends javax.swing.JPanel {
                     .addComponent(lblCity)
                     .addComponent(txtCity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblState)
-                    .addComponent(cmbState, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblZip)
-                    .addComponent(txtZip, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtZip, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtState, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAddAddress)
@@ -157,7 +177,6 @@ public class AddressMessagePanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddAddress;
     private javax.swing.JButton btnRemoveAddress;
-    private javax.swing.JComboBox cmbState;
     private javax.swing.JLabel lblAddress;
     private javax.swing.JLabel lblCity;
     private javax.swing.JLabel lblFirstName;
@@ -168,6 +187,7 @@ public class AddressMessagePanel extends javax.swing.JPanel {
     private javax.swing.JTextField txtCity;
     private javax.swing.JTextField txtFirstName;
     private javax.swing.JTextField txtLastName;
+    private javax.swing.JTextField txtState;
     private javax.swing.JTextField txtZip;
     // End of variables declaration//GEN-END:variables
 }

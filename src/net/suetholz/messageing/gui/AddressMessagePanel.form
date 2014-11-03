@@ -40,8 +40,8 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="32767" attributes="0"/>
                               <Component id="lblState" min="-2" pref="61" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="cmbState" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="txtState" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
                               <Component id="lblZip" min="-2" pref="70" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -90,9 +90,9 @@
                   <Component id="lblCity" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtCity" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="lblState" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="cmbState" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="lblZip" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtZip" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtState" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -156,18 +156,6 @@
         <Property name="text" type="java.lang.String" value="State"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JComboBox" name="cmbState">
-      <Properties>
-        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="4">
-            <StringItem index="0" value="Item 1"/>
-            <StringItem index="1" value="Item 2"/>
-            <StringItem index="2" value="Item 3"/>
-            <StringItem index="3" value="Item 4"/>
-          </StringArray>
-        </Property>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JLabel" name="lblZip">
       <Properties>
         <Property name="text" type="java.lang.String" value="Zip"/>
@@ -184,7 +172,7 @@
         <Property name="text" type="java.lang.String" value="Add Address Message"/>
       </Properties>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="btnAddAddress.addActionListener(new AddAddressListener());"/>
+        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="btnAddAddress.addActionListener(new AddMessageListener(initialListeners));"/>
       </AuxValues>
     </Component>
     <Component class="javax.swing.JButton" name="btnRemoveAddress">
@@ -192,8 +180,14 @@
         <Property name="text" type="java.lang.String" value="Remove Address Message"/>
       </Properties>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="btnRemoveAddress.addActionListener(new RemoveAddressListener());"/>
+        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="btnRemoveAddress.addActionListener(new RemoveMessageListener(initialListeners));"/>
       </AuxValues>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtState">
+      <Properties>
+        <Property name="horizontalAlignment" type="int" value="4"/>
+        <Property name="text" type="java.lang.String" value="                  "/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

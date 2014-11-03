@@ -6,13 +6,14 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Random;
 import net.suetholz.messageing.api.MessageProducer;
+import net.suetholz.messageing.api.MessageStorage;
 import net.suetholz.messageing.api.MessageType;
 
 /**
  *
  * @author wsuetholz
  */
-public class RandomMessageProducer implements MessageProducer {
+public class RandomMessageProducer implements MessageProducer, MessageStorage {
 
     private static final String MESSAGE_IS_NULL = "Message parameter invalid!";
 
@@ -36,6 +37,7 @@ public class RandomMessageProducer implements MessageProducer {
      *
      * @param message
      */
+    @Override
     public void addMessage(MessageType message) {
 	// Note: 
 	// Because in practice I believe that adding messages will happen
@@ -51,12 +53,22 @@ public class RandomMessageProducer implements MessageProducer {
 	messageList = new ArrayList<>(new HashSet<MessageType>(messageList));
     }
 
+    @Override
     public void removeMessage(MessageType message) {
 	if (message == null) {
 	    throw new IllegalArgumentException(MESSAGE_IS_NULL);
 	}
 
 	messageList.remove(message);
+    }
+
+    @Override
+    public MessageType getMessage(int idx) {
+	if (idx < 0 || (idx+1) > messageList.size()) {
+	    throw new ArrayIndexOutOfBoundsException();
+	}
+
+	return messageList.get(idx);
     }
 
     @Override
