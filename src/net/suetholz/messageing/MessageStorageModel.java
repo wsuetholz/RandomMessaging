@@ -13,13 +13,13 @@ import javax.swing.table.AbstractTableModel;
 import javax.swing.table.TableModel;
 import net.suetholz.messageing.api.MessageStorage;
 import net.suetholz.messageing.api.MessageType;
+import net.suetholz.messageing.exceptions.NullStringParameterException;
 
 /**
  *
  * @author wsuetholz
  */
 public class MessageStorageModel extends AbstractTableModel implements MessageStorage {
-    private static final String MESSAGE_IS_NULL = "Message parameter invalid!";
 
     private static final String[] columnNames = { "Message" };
 
@@ -52,20 +52,22 @@ public class MessageStorageModel extends AbstractTableModel implements MessageSt
 	// a fairly costly operation, and still bears some additional thought
 	// to tune things better....
 	if (message == null) {
-	    throw new IllegalArgumentException(MESSAGE_IS_NULL);
+	    throw new NullStringParameterException();
 	}
 
 	messageList.add(message);
 	messageList = new ArrayList<>(new LinkedHashSet<MessageType>(messageList)); // LinkedHashSet maintains order!!
+	this.fireTableDataChanged();
     }
 
     @Override
     public final void removeMessage(MessageType message) {
 	if (message == null) {
-	    throw new IllegalArgumentException(MESSAGE_IS_NULL);
+	    throw new NullStringParameterException();
 	}
 
 	messageList.remove(message);
+	this.fireTableDataChanged();
     }
 
     @Override

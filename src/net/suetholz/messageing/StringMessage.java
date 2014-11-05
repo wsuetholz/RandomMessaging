@@ -7,13 +7,13 @@ package net.suetholz.messageing;
 
 import java.util.Objects;
 import net.suetholz.messageing.api.MessageType;
+import net.suetholz.messageing.exceptions.NullStringParameterException;
 
 /**
  *
  * @author wsuetholz
  */
 public class StringMessage implements MessageType {
-    private static final String MESSAGE_IS_NULL = "Message parameter invalid!";
     private String message;
     
     public StringMessage(String message) {
@@ -26,7 +26,7 @@ public class StringMessage implements MessageType {
 
     public final void setMessage(String message) {
 	if (message == null) {
-	    throw new IllegalArgumentException(MESSAGE_IS_NULL);
+	    throw new NullStringParameterException();
 	}
 	this.message = message;
     }

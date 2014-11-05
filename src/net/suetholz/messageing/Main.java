@@ -8,7 +8,6 @@ package net.suetholz.messageing;
 import net.suetholz.messageing.gui.MessagingGUI;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import net.suetholz.messageing.api.MessageStorageChangedListener;
 import net.suetholz.messageing.api.MessageProducer;
