@@ -20,44 +20,39 @@ import net.suetholz.messageing.generator.RandomMessageProducer;
  * @author wsuetholz
  */
 public class Main {
+
     private static final String PROGRAM_FAULT = "I'm sorry, but something is misconfigured in the application!";
-    
+
     public static void main(String[] args) {
 	List<MessageStorageChangedListener> interestedParties = new ArrayList<>();
-	MessageProducer messageProducer = new RandomMessageProducer();
-        MessageStorage messageStorage = null;
-	if (messageProducer instanceof MessageStorage) {
-	    messageStorage = (MessageStorage) messageProducer;
-	    interestedParties.add(new StorageChangedListener(messageStorage));
-	    
-	    try {
-		// Set System L&F
-		UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-	    } catch (Exception e) {
-		// do nothing, this can safely be ignored because
-		// it will fall back to the basic metal L&F if something
-		// goes wrong. This is also a rare example of a scenario
-		// where the catch clause could be safely eliminated.
-	    }
+	MessageStorage messageStorage = new MessageStorageModel();
+	MessageProducer messageProducer = new RandomMessageProducer(messageStorage);
+	interestedParties.add(new StorageChangedListener(messageStorage));
 
-	    final MessagingGUI messagingGui = new MessagingGUI(messageStorage, messageProducer, interestedParties);
-	    
-	    /* 
-	     Create and display the form  on a separate thread using
-	     JDK 7 or earlier syntax, which rquires an anonymous inner class
-	     */
-	    java.awt.EventQueue.invokeLater(new Runnable() {
-		@Override
-		public void run() {
-		    messagingGui.setVisible(true);
-    //                Window3 w3 = new Window3();
-    //                w3.setVisible(true);
-    //                new Window2(w3).setVisible(true);
-		}
-	    });
-	} else {
-	    JOptionPane.showMessageDialog(null, PROGRAM_FAULT);
+	try {
+	    // Set System L&F
+	    UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+	} catch (Exception e) {
+		// do nothing, this can safely be ignored because
+	    // it will fall back to the basic metal L&F if something
+	    // goes wrong. This is also a rare example of a scenario
+	    // where the catch clause could be safely eliminated.
 	}
 
+	final MessagingGUI messagingGui = new MessagingGUI(messageStorage, messageProducer, interestedParties);
+
+	/* 
+	 Create and display the form  on a separate thread using
+	 JDK 7 or earlier syntax, which rquires an anonymous inner class
+	 */
+	java.awt.EventQueue.invokeLater(new Runnable() {
+	    @Override
+	    public void run() {
+		messagingGui.setVisible(true);
+    //                Window3 w3 = new Window3();
+		//                w3.setVisible(true);
+		//                new Window2(w3).setVisible(true);
+	    }
+	});
     }
 }

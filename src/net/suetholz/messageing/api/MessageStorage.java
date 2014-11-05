@@ -5,6 +5,8 @@
  */
 package net.suetholz.messageing.api;
 
+import javax.swing.table.TableModel;
+
 /**
  *
  * @author wsuetholz
@@ -20,5 +22,9 @@ public interface MessageStorage {
     public abstract void removeMessage(MessageType message);
 
     public abstract MessageType getMessage (int idx);
+    
+    public abstract int length();
+    
+    public abstract TableModel getTableModel();
 
 }

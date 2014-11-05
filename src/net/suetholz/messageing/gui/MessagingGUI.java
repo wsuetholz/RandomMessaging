@@ -55,14 +55,10 @@ public class MessagingGUI extends javax.swing.JFrame {
 
         jMenuItem1 = new javax.swing.JMenuItem();
         lblHeading = new javax.swing.JLabel();
-        pnlMessages = new javax.swing.JScrollPane();
-        tblMessages = new javax.swing.JTable();
-        pnlAddressMessage = pnlAddressMessage = new net.suetholz.messageing.gui.AddressMessagePanel(initialListeners);
-        ;
-        pnlStringMessage = pnlStringMessage = new net.suetholz.messageing.gui.StringMessagePanel(initialListeners);
-        ;
-        selectMessagePanel1 = selectMessagePanel1 = new net.suetholz.messageing.gui.SelectMessagePanel(messageProducer);
-        ;
+        pnlAddressMessage = new net.suetholz.messageing.gui.AddressMessagePanel(initialListeners);
+        pnlStringMessage = new net.suetholz.messageing.gui.StringMessagePanel(initialListeners);
+        pnlSelectMessage = new net.suetholz.messageing.gui.SelectMessagePanel(messageProducer);
+        pnlMessageStorage = new net.suetholz.messageing.gui.MessageStoragePanel(messageStorage);
         mnuBar = new javax.swing.JMenuBar();
         mnuFile = new javax.swing.JMenu();
         mnuEdit = new javax.swing.JMenu();
@@ -76,21 +72,13 @@ public class MessagingGUI extends javax.swing.JFrame {
         lblHeading.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblHeading.setText("Random Message Selector");
 
-        tblMessages.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-
-            }
-        ));
-        pnlMessages.setViewportView(tblMessages);
-
         pnlAddressMessage.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         pnlStringMessage.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        selectMessagePanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        pnlSelectMessage.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        pnlMessageStorage.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         mnuFile.setText("File");
         mnuBar.add(mnuFile);
@@ -116,13 +104,13 @@ public class MessagingGUI extends javax.swing.JFrame {
                         .addComponent(lblHeading, javax.swing.GroupLayout.PREFERRED_SIZE, 421, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(pnlMessages))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(8, 8, 8)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(pnlMessageStorage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
                             .addComponent(pnlAddressMessage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(selectMessagePanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(pnlSelectMessage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(pnlStringMessage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
@@ -136,10 +124,10 @@ public class MessagingGUI extends javax.swing.JFrame {
                 .addGap(12, 12, 12)
                 .addComponent(pnlStringMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(selectMessagePanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(11, 11, 11)
-                .addComponent(pnlMessages, javax.swing.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(pnlSelectMessage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(pnlMessageStorage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -154,9 +142,8 @@ public class MessagingGUI extends javax.swing.JFrame {
     private javax.swing.JMenu mnuExit;
     private javax.swing.JMenu mnuFile;
     private net.suetholz.messageing.gui.AddressMessagePanel pnlAddressMessage;
-    private javax.swing.JScrollPane pnlMessages;
+    private net.suetholz.messageing.gui.MessageStoragePanel pnlMessageStorage;
+    private net.suetholz.messageing.gui.SelectMessagePanel pnlSelectMessage;
     private net.suetholz.messageing.gui.StringMessagePanel pnlStringMessage;
-    private net.suetholz.messageing.gui.SelectMessagePanel selectMessagePanel1;
-    private javax.swing.JTable tblMessages;
     // End of variables declaration//GEN-END:variables
 }

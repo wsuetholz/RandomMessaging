@@ -110,7 +110,9 @@ public class AddressMessage implements MessageType {
 
     @Override
     public String toString() {
-	return firstName + " " + lastName + ", " + addressLine + ", " + city + ", " + state + ", " + postalCode;
+	return firstName.trim() + " " + lastName.trim() + ", " + 
+	       addressLine.trim() + ", " + city.trim() + ", " + 
+	       state.trim() + ", " + postalCode.trim();
     }
 
     @Override
