@@ -33,7 +33,7 @@ public class StringMessagePanel extends javax.swing.JPanel implements MessagePro
     }
 
     @Override
-    public MessageType produceMessage() {
+    public final MessageType produceMessage() {
 	return (new StringMessage (txtMessage.getText()));
     }
 

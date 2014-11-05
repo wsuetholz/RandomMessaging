@@ -28,7 +28,7 @@ public class SelectMessagePanel extends javax.swing.JPanel {
 	initComponents();
     }
 
-    public void setMessageText ( String txtString ) {
+    public final void setMessageText ( String txtString ) {
 	if (txtString == null) {
 	    throw new IllegalArgumentException();
 	}

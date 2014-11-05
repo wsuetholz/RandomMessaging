@@ -27,7 +27,7 @@ public class RandomMessageProducer implements MessageProducer {
     }
 
     @Override
-    public MessageType produceMessage() {
+    public final MessageType produceMessage() {
 	Random r = new Random(System.nanoTime());
 	int index = r.nextInt(messageStorage.length());
 
@@ -35,14 +35,14 @@ public class RandomMessageProducer implements MessageProducer {
     }
 
     @Override
-    public int hashCode() {
+    public final int hashCode() {
 	int hash = 7;
 	hash = 17 * hash + Objects.hashCode(this.messageStorage);
 	return hash;
     }
 
     @Override
-    public boolean equals(Object obj) {
+    public final boolean equals(Object obj) {
 	if (obj == null) {
 	    return false;
 	}
@@ -57,7 +57,7 @@ public class RandomMessageProducer implements MessageProducer {
     }
 
     @Override
-    public String toString() {
+    public final String toString() {
 	return "RandomMessageProducer{" + "messageList=" + messageStorage.toString() + '}';
     }
 

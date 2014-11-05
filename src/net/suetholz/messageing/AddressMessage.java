@@ -36,11 +36,11 @@ public class AddressMessage implements MessageType {
 	setPostalCode(postalCode);
     }
 
-    public String getFirstName() {
+    public final String getFirstName() {
 	return firstName;
     }
 
-    public void setFirstName(String firstName) {
+    public final void setFirstName(String firstName) {
 	if (firstName == null) {
 	    throw new IllegalArgumentException(FIRST_NAME_INVALID);
 	}
@@ -48,11 +48,11 @@ public class AddressMessage implements MessageType {
 	this.firstName = firstName;
     }
 
-    public String getLastName() {
+    public final String getLastName() {
 	return lastName;
     }
 
-    public void setLastName(String lastName) {
+    public final void setLastName(String lastName) {
 	if (lastName == null) {
 	    throw new IllegalArgumentException(LAST_NAME_INVALID);
 	}
@@ -60,11 +60,11 @@ public class AddressMessage implements MessageType {
 	this.lastName = lastName;
     }
 
-    public String getAddressLine() {
+    public final String getAddressLine() {
 	return addressLine;
     }
 
-    public void setAddressLine(String addressLine) {
+    public final void setAddressLine(String addressLine) {
 	if (addressLine == null) {
 	    throw new IllegalArgumentException(ADDRESS_LINE_INVALID);
 	}
@@ -72,11 +72,11 @@ public class AddressMessage implements MessageType {
 	this.addressLine = addressLine;
     }
 
-    public String getCity() {
+    public final String getCity() {
 	return city;
     }
 
-    public void setCity(String city) {
+    public final void setCity(String city) {
 	if (city == null) {
 	    throw new IllegalArgumentException(CITY_INVALID);
 	}
@@ -84,11 +84,11 @@ public class AddressMessage implements MessageType {
 	this.city = city;
     }
 
-    public String getState() {
+    public final String getState() {
 	return state;
     }
 
-    public void setState(String state) {
+    public final void setState(String state) {
 	if (state == null) {
 	    throw new IllegalArgumentException(STATE_INVALID);
 	}
@@ -96,11 +96,11 @@ public class AddressMessage implements MessageType {
 	this.state = state;
     }
 
-    public String getPostalCode() {
+    public final String getPostalCode() {
 	return postalCode;
     }
 
-    public void setPostalCode(String postalCode) {
+    public final void setPostalCode(String postalCode) {
 	if (postalCode == null) {
 	    throw new IllegalArgumentException(POSTAL_CODE_INVALID);
 	}
@@ -109,14 +109,14 @@ public class AddressMessage implements MessageType {
     }
 
     @Override
-    public String toString() {
+    public final String toString() {
 	return firstName.trim() + " " + lastName.trim() + ", " + 
 	       addressLine.trim() + ", " + city.trim() + ", " + 
 	       state.trim() + ", " + postalCode.trim();
     }
 
     @Override
-    public int hashCode() {
+    public final int hashCode() {
 	int hash = 5;
 	hash = 97 * hash + Objects.hashCode(this.firstName);
 	hash = 97 * hash + Objects.hashCode(this.lastName);
@@ -128,7 +128,7 @@ public class AddressMessage implements MessageType {
     }
 
     @Override
-    public boolean equals(Object obj) {
+    public final boolean equals(Object obj) {
 	if (obj == null) {
 	    return false;
 	}

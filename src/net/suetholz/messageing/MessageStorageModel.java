@@ -34,7 +34,7 @@ public class MessageStorageModel extends AbstractTableModel implements MessageSt
      *
      * @return the value of messageList
      */
-    public List<MessageType> getMessageList() {
+    public final List<MessageType> getMessageList() {
 	return messageList;
     }
 
@@ -44,7 +44,7 @@ public class MessageStorageModel extends AbstractTableModel implements MessageSt
      * @param message
      */
     @Override
-    public void addMessage(MessageType message) {
+    public final void addMessage(MessageType message) {
 	// Note: 
 	// Because in practice I believe that adding messages will happen
 	// less frequently than producing a random message. The transformation
@@ -60,7 +60,7 @@ public class MessageStorageModel extends AbstractTableModel implements MessageSt
     }
 
     @Override
-    public void removeMessage(MessageType message) {
+    public final void removeMessage(MessageType message) {
 	if (message == null) {
 	    throw new IllegalArgumentException(MESSAGE_IS_NULL);
 	}
@@ -69,7 +69,7 @@ public class MessageStorageModel extends AbstractTableModel implements MessageSt
     }
 
     @Override
-    public MessageType getMessage(int idx) {
+    public final MessageType getMessage(int idx) {
 	if (idx < 0 || (idx+1) > messageList.size()) {
 	    throw new ArrayIndexOutOfBoundsException();
 	}
@@ -78,39 +78,39 @@ public class MessageStorageModel extends AbstractTableModel implements MessageSt
     }
 
     @Override
-    public TableModel getTableModel() {
+    public final TableModel getTableModel() {
 	return this;
     }
 
     @Override
-    public int length() {
+    public final int length() {
 	return messageList.size();
     }
 
     @Override
-    public int getRowCount() {
+    public final int getRowCount() {
 	return messageList.size();
     }
 
     @Override
-    public int getColumnCount() {
+    public final int getColumnCount() {
 	return 1;
     }
 
     @Override
-    public Object getValueAt(int rowIndex, int columnIndex) {
+    public final Object getValueAt(int rowIndex, int columnIndex) {
 	return messageList.get(rowIndex).toString();
     }
 
     @Override
-    public int hashCode() {
+    public final int hashCode() {
 	int hash = 7;
 	hash = 19 * hash + Objects.hashCode(this.messageList);
 	return hash;
     }
 
     @Override
-    public boolean equals(Object obj) {
+    public final boolean equals(Object obj) {
 	if (obj == null) {
 	    return false;
 	}
@@ -125,7 +125,7 @@ public class MessageStorageModel extends AbstractTableModel implements MessageSt
     }
 
     @Override
-    public String toString() {
+    public final String toString() {
 	return "MessageStorageModel{" + "messageList=" + messageList + '}';
     }
     

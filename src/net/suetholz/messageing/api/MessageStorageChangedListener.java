@@ -10,6 +10,6 @@ package net.suetholz.messageing.api;
  * @author wsuetholz
  */
 public interface MessageStorageChangedListener {
-    public void newMessageProduced (MessageType message);
-    public void oldMessageRemoved (MessageType message);
+    public abstract void newMessageProduced (MessageType message);
+    public abstract void oldMessageRemoved (MessageType message);
 }

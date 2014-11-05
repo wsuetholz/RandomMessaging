@@ -20,11 +20,11 @@ public class StringMessage implements MessageType {
 	setMessage(message);
     }
 
-    public String getMessage() {
+    public final String getMessage() {
 	return message;
     }
 
-    public void setMessage(String message) {
+    public final void setMessage(String message) {
 	if (message == null) {
 	    throw new IllegalArgumentException(MESSAGE_IS_NULL);
 	}
@@ -32,19 +32,19 @@ public class StringMessage implements MessageType {
     }
 
     @Override
-    public String toString() {
+    public final String toString() {
 	return message;
     }
 
     @Override
-    public int hashCode() {
+    public final int hashCode() {
 	int hash = 3;
 	hash = 29 * hash + Objects.hashCode(this.message);
 	return hash;
     }
 
     @Override
-    public boolean equals(Object obj) {
+    public final boolean equals(Object obj) {
 	if (obj == null) {
 	    return false;
 	}

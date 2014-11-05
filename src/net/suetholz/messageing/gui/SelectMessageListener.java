@@ -32,7 +32,7 @@ public class SelectMessageListener implements ActionListener {
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) {
+    public final void actionPerformed(ActionEvent e) {
 	if (e.getSource() instanceof JButton) {
 	    JButton button = (JButton) e.getSource();
 	    if (button.getParent() instanceof SelectMessagePanel) {

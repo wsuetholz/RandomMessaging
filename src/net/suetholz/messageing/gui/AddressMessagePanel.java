@@ -33,7 +33,7 @@ public class AddressMessagePanel extends javax.swing.JPanel implements MessagePr
     }
 
     @Override
-    public MessageType produceMessage() {
+    public final MessageType produceMessage() {
 	return (new AddressMessage (txtFirstName.getText(), txtLastName.getText(), txtAddress.getText(), txtCity.getText(), txtState.getText(), txtZip.getText()));
     }
 

@@ -28,7 +28,7 @@ public class StorageChangedListener implements MessageStorageChangedListener {
     }
 
     @Override
-    public void newMessageProduced(MessageType message) {
+    public final void newMessageProduced(MessageType message) {
 	if (message == null) {
 	    throw new IllegalArgumentException(MESSAGE_IS_NULL);
 	}
@@ -36,7 +36,7 @@ public class StorageChangedListener implements MessageStorageChangedListener {
     }
 
     @Override
-    public void oldMessageRemoved(MessageType message) {
+    public final void oldMessageRemoved(MessageType message) {
 	if (message == null) {
 	    throw new IllegalArgumentException(MESSAGE_IS_NULL);
 	}
